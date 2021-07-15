@@ -1,0 +1,19 @@
+/*
+Mettre ici tous les imports de partiels sass
+*/
+
+/*
+invisible
+*/
+@import "./base/variables";
+@import "./base/mixins";
+
+
+/*
+visible
+*/
+@import "./components/buttons";
+@import "./page/header";
+@import "./page/navbar";
+@import "./page/footer";
+
