@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch ./sass/main.scss:styles/styles.css"
-    
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap-icons": "^1.5.0"
+  }
 }
