@@ -1,8 +1,21 @@
+/*
+body de toutes les pages
+*/
 body {
   padding: 0px;
   margin: 0px;
   font-size: 1.2em;
   font-family: Roboto;
+}
+
+/*
+header de toutes les pages
+*/
+/*
+header
+*/
+.css-header {
+  background: lightpink;
 }
 
 /*
@@ -21,13 +34,6 @@ style du logo ORIDOUDOU
 }
 
 /*
-header
-*/
-.css-header {
-  background: lightpink;
-}
-
-/*
 taille des icones font aweome
 */
 .icon-size {
@@ -35,6 +41,23 @@ taille des icones font aweome
   color: #6666ff;
 }
 
+/*
+footer de toutes les pages
+*/
+/*
+footer
+*/
+.css-footer {
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/*
+section de toutes les pages
+*/
 /*
 mise en page de la section des produits
 */
@@ -66,14 +89,7 @@ mise en page de la card du produit doudou
 }
 
 /*
-footer
+tout le reste
 */
-.css-footer {
-  background: pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
 
 /*# sourceMappingURL=styles.css.map */
