@@ -1,163 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr-fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORIDOUDOU</title>
 
-        <meta name="description" content="Bienvenue chez Oridoudou LE site de vente de doudou en ligne"/>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <title>
-            Oridoudou
-        </title>
+    <link rel="stylesheet"
+    href="styles/styles.css">
 
-        <!--
-            toutes les balises link rel="stylesheet":
-            1 . bootstrap : en premier pour utiliser ses classes
-            2 . styles css : ensuite utiliser mes styles
-            3 . font awesome
-        -->
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="./styles/styles.css">
-
-        <!--
-            font awesome : utiliser 1 CDN permet de booster le temps de chargement de la page
-        -->
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-
-        <!-- ne sert pas
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,300&display=swap"/>
-        
-        
-
-    </head>
-    <body>
-        <!--
-            header de la page avec logo, menu de navigation et barre de recherche
-        -->
-        <header class="container-fluid css-header">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand style-logo" href="index.html">ORIDOUDOU</a>
-                    <button class="navbar-toggler" type="button" 
-                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i class="far fa-caret-square-down icon-size"></i></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html"><i class="fas fa-home"></i>Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="panier.html"><i class="fas fa-shopping-basket"></i>Panier</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html"><i class="far fa-envelope"></i>Contact</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <!--
-            fin de header
-        -->
-
-        <!--
-            section de la page avec les produits : doudou
-        -->
-        <section class="container-fluid css-section">
-            <!--
-                mettre en place les titres et introductions
-            -->
-            <div class="jumbotron">
-                <h1>Bienvenue chez ORIDOUDOU</h1>
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">
+                <i class="fas fa-baby-carriage logo-size"></i>
+                <span class="logo-size">ORIDOUDOU</span>
+                <i class="fas fa-baby logo-size"></i>
+            </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html"><i class="fas fa-home"></i>Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="panier.html"><i class="fas fa-shopping-basket"></i>Panier tout doux</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
             </div>
-
-            <h2 class="css-h2">
-                ORIDOUDOU propose des doudous tout doux tout mignon pour tous ! <i class="far fa-laugh-beam"></i>
+          </nav>
+    </header>
+    <main>
+        <aside class="presentation">
+            <h1>
+                Fournir du bonheur avec des doudous tout doux et tout mignon
+            </h1>
+            <h2>
+                Confort optimal <br> Douceur maximale <br> Tendresse absolue
             </h2>
-            <h3 class="css-h3">
-                Voici nos produits tout doux tout mignon
-            </h3>
-            
-            <!--
-                affichage des produits : doudou
-            -->
-            <div class="card css-card">
-                <img class="card-img-top text-success" src="./node_modules/bootstrap-icons/icons/person-badge.svg" alt="image" width="32" height="32" title="person">
-                <div class="card-body">
-                   <h3 class="card-title">ici le nom du doudou</h3>
-                   <p class="card-text">ici la description du doudou</p>
-                   <p class="card-text">ici le prix du doudou</p>
-                   <a href="#" class="btn btn-primary">Oui je prends !</a>
-                </div>
-             </div>
-        </section>
+        </aside>
+        <section>    
+          <h3>Nos produits</h3>
+          <p>Je touche je prends</p>
+          <div class="fs-1 fw-bold bg-danger d-flex justify-content-center" id="message-erreur"></div>
 
-        <!--
-            fin de section
-        -->
+          <article class="liste">
 
-        <!--
-            footer de la page avec mentions legales informations complementaires
-        -->
-        <footer class="container-fluid css-footer">
 
-            <h4 class="container-fluid d-flex justify-content-center">Pour en savoir plus</h4>
-            
-            <ul class=" list-unstyled">
-                
-                <li class="rounded-pill border border-2 border-info d-flex justify-content-center mt-3 mb-3">
-                    <a class="nav-link" href="#">Mentions Légales</a>
-                </li>
-                <li class="rounded-pill border border-2 border-info d-flex justify-content-center mt-3 mb-3">
-                    <a class="nav-link" href="#">Notre politique de recyclage</a>
-                </li>
-                <li class="rounded-pill border border-2 border-info d-flex justify-content-center mt-3 mb-3">
-                    <a class="nav-link" href="#">Devenir partenaires</a>
-                </li>
-            </ul>
-
-        </footer>
-        
-        <!--
-            fin de footer
-        -->
-
-        <!--
-            CODE JAVASCRIPT pour remplir la page index
-        -->
-
-        <script src="index.js" async>
-
-        </script>
+          </article>
 
     
-
-
-
-
-        <!--
-            Mise en place des scripts pour le fonctionnement de Bootstrap
-        -->
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    </body>
+        </section>
+    </main>
+    <footer>
+        <aside class="container-fluid d-flex list-unstyled">
+            <ul>
+                <li>Contact</li>
+                <li>Newsletter</li>
+                <li>Mentions</li>
+            </ul>
+            <ul>
+                <li>Recrutement</li>
+                <li>Devenir partenaires</li>
+                <li>Politique de recyclage</li>
+            </ul>
+        </aside>    
+    </footer>
+    <script src="index.js"></script>
+</body>
 </html>

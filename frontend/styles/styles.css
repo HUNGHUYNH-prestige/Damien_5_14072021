@@ -1,95 +1,11 @@
-/*
-body de toutes les pages
-*/
-body {
-  padding: 0px;
-  margin: 0px;
-  font-size: 1.2em;
-  font-family: Roboto;
-}
-
-/*
-header de toutes les pages
-*/
-/*
-header
-*/
-.css-header {
-  background: lightpink;
-}
-
-/*
-style du logo ORIDOUDOU
-*/
-.style-logo {
-  font-family: Shrikhand;
+.logo-size {
   font-size: 1.5em;
-  font-style: normal;
-  font-weight: normal;
-  border: 1px solid lightblue;
-  border-radius: 50%;
-  background: lightblue;
-  letter-spacing: 2px;
-  color: darkblue;
 }
 
-/*
-taille des icones font aweome
-*/
-.icon-size {
-  font-size: 2em;
-  color: #6666ff;
+.liste {
+  border: 10px dashed grey;
+  padding: 10px;
+  margin: 10px;
 }
-
-/*
-footer de toutes les pages
-*/
-/*
-footer
-*/
-.css-footer {
-  background: pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/*
-section de toutes les pages
-*/
-/*
-mise en page de la section des produits
-*/
-.css-section {
-  background: orange;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-/*
-mise en page de h2
-*/
-.css-h2 {
-  border: 1px dashed white;
-  padding: 5px;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: white;
-  background: darkgreen;
-}
-
-/*
-mise en page de la card du produit doudou
-*/
-.css-card {
-  border: 1px solid white;
-  border-radius: 20px;
-  background: lightgrey;
-}
-
-/*
-tout le reste
-*/
 
 /*# sourceMappingURL=styles.css.map */
