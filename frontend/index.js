@@ -33,6 +33,7 @@ function getProduct(url){
         error = 'attention';
         console.log('Il y a une erreur : ' + error);
         console.error('Message d\'erreur : analyse URL');
+        alert('ATTENTION CHARGEMENT IMPOSSIBLE !');
     })
 }
 
@@ -88,13 +89,43 @@ function displayData(data){
         let bouton = document.createElement('a');
         bouton.classList.add('href');
         
-        //let id = data[indice]._id;
-        //console.log('id du produit : ' + id);
+        let id = data[indice]._id;
+        console.log('id du produit : ' + id);
         
         //let lien = 'product.html?id=' + data[indice]._id;
-        let lien = 'product.html';
+        // page de destination + ? marque de query string + paire key=value avec key : id et value : id product
+        let lien = 'product.html' + '?' + 'id=' + data[indice]._id;
+
+        // soit faire avec id
+        // soit faire avec name
+        // parce que unique
+
         bouton.href = lien;
-        //console.log(lien);
+        console.log('lien avec id :' + lien);
+
+        // where is the current page
+        // 1. sans window
+        let sans = location.href;
+        console.log('sans window' + sans);
+
+        // 2. avec window
+        let avec = window.location.href;
+        console.log('avec window :' + avec);
+
+        // conclusion : url identique
+
+
+
+        // fire immediatly to the href url
+        //location.href = 'https://www.google.fr/';
+        //console.log(location.href);
+
+
+        // location avec search
+        var search = window.location.search;
+        console.log('search :' + search);
+        // console : vide 
+
 
         bouton.classList.add('btn');
         bouton.classList.add('btn-lg');

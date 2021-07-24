@@ -14,6 +14,7 @@ function getProduct(url){
     })
     .then(function(data){
         console.log(data);
+        getArticle(data);
     })
     .catch(function(error){
         error = 'attention';
@@ -27,5 +28,14 @@ function getProduct(url){
 getProduct('http://localhost:3000/api/teddies');
 
 
+// l'article est un doudou
+
+function getArticle(doudou){
+    console.log(doudou);
+    let ici = window.location;
+    console.log('la page est : ' + ici);
+    let search = window.location.search;
+    console.log('partie variable de la page :' + search);
 
 
+}
