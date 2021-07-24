@@ -1,81 +1,107 @@
-// create function with FETCH data API
-function affichageDoudou() {
-  fetch('http://localhost:3000/api/teddies')
-    .then(function(res) {
-      if (res.ok) {
-        return res.json();
-      }
+// title h1 header
+
+let h1 = document.getElementById('h1');
+h1.classList.add('text-center');
+h1.classList.add('bg-warning');
+h1.innerHTML = 'Voici nos produits';
+
+// create article tag to contain the products
+
+let article = document.createElement('article');
+article.classList.add('article');
+
+// connect = append the article tag to the ID already set in HTml
+
+let productsList = document.getElementById('products-list');
+productsList.appendChild(article);
+
+// create a function to fetch data from API
+
+function getProduct(url){
+    fetch(url)
+    .then(function(result){
+        if (result.ok){
+            return result.json();
+        }
     })
-    .then(function(dataDoudou){
-      console.log(dataDoudou);
-      for (doudou in dataDoudou){
-        console.log(doudou);
+    .then(function(data){
+        console.log(data);
+        // display data from the API on the page
+        displayData(data);
+    })
+    .catch(function(error){
+        error = 'attention';
+        console.log('Il y a une erreur : ' + error);
+        console.error('Message d\'erreur : analyse URL');
+    })
+}
 
-        // 1. mettre en place le premier element de base qui s'accroche a un autre element du DOM
+// call the function : fetch in order to get the data on the console
 
-        var texte = document.createElement('div');
-        document.querySelector('.liste').appendChild(texte);
-        texte.classList.add('btn');
-        texte.classList.add('btn-warning');
-        texte.classList.add('fs-1');
-        texte.classList.add('w-100');
-        texte.innerHTML = dataDoudou[doudou]['name'];
+getProduct('http://localhost:3000/api/teddies');
 
-        // 2. mettre en place la carte pour contenir l'image
+// display the data on the page with this function : displayData()
+// create the function
 
-        var card = document.createElement('div');
-        card.classList.add('card');
-        texte.appendChild(card);
-        // a ce parent texte j'ajoute un enfant card : parent texte vers => enfant card
+function displayData(data){   
 
-        // 3. mettre en place le lien vers l'API pour afficher l'image
+    for (let indice = 0 ; indice < data.length ; indice = indice + 1){
 
-        var image = document.createElement('img');
+        //console.log(indice);
+        //console.log(data.length);
+
+        let figure = document.createElement('figure');
+        //figure.classList.add('card');
+        figure.classList.add('card-size');
+        article.appendChild(figure);
+
+        let name = document.createElement('div');
+        name.classList.add('card-header');
+        name.classList.add('bg-warning');
+        name.innerHTML = data[indice].name;
+        figure.appendChild(name);
+
+        let image = document.createElement('img');
         image.classList.add('card-img-top');
-        image.src = dataDoudou[doudou]['imageUrl'];
-        card.appendChild(image);
+        image.classList.add('src');
 
-        // 4. mettre en place le body de la carte pour contenir le texte
-        
-        var cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-        cardBody.classList.add('bg-info');
-        cardBody.classList.add('w-100');
-        image.appendChild(cardBody);
-        console.log(cardBody);
+        let source = data[indice].imageUrl;
+        image.src = source;
+        //console.log(source);
+        //console.log(image);
+        figure.appendChild(image);
 
-        // 5. mettre en place la description du doudou
+        let figcaption = document.createElement('figcaption');
+        figcaption.classList.add('card-body');
+        figure.appendChild(figcaption);
 
-        var cardTitle = document.createElement('div');
-        cardTitle.classList.add('card-title');
-        cardTitle.innerHTML = dataDoudou[doudou]['description'];
-        cardBody.appendChild(cardTitle);
+        let cardTitle = document.createElement('h2');
+        cardTitle.classList.add('card-text');
+        cardTitle.innerHTML = 'Description <br><br>' + data[indice].description + ' <br><br>';
+        figcaption.appendChild(cardTitle);
 
-        var cardText = document.createElement("div");
+        let cardText = document.createElement('h2');
         cardText.classList.add('card-text');
+        cardText.innerHTML = 'Prix <br><br>' + data[indice].price/100 + ' Euros';
         cardTitle.appendChild(cardText);
-        cardText.innerText = dataDoudou[doudou]['price']/100 + ' EUR';
 
-        var achat = document.createElement('button');
-        achat.classList.add('btn');
-        achat.classList.add('btn-primary');
-        achat.innerHTML = 'Je le prends !';
+        let bouton = document.createElement('a');
+        bouton.classList.add('href');
+        
+        //let id = data[indice]._id;
+        //console.log('id du produit : ' + id);
+        
+        //let lien = 'product.html?id=' + data[indice]._id;
+        let lien = 'product.html';
+        bouton.href = lien;
+        //console.log(lien);
 
-      }
-    })
-    .catch(function(error) {
-      console.log(error);
-      // incoming error
-      let messageError = document.getElementById("message-erreur");
-      messageError.innerHTML = "Les doudous ne souhaitent pas venir ...";
-    })
-};
+        bouton.classList.add('btn');
+        bouton.classList.add('btn-lg');
+        bouton.classList.add('btn-primary');
+        bouton.innerHTML = 'Prendre sans regret';
+        figure.appendChild(bouton);
 
-// call de la fonction
-// au meme moment que le chargement de la page
-//affichageDoudou();
-
-
-// chargement de tous les elements du DOM
-// ensuite appelle de la fonction
-window.onload = affichageDoudou;
+        
+    }
+}
