@@ -5,21 +5,22 @@ h1.classList.add('text-center');
 h1.classList.add('bg-warning');
 h1.innerHTML = 'Voici votre produit';
 
+// le plus difficile est ici
+
 // get the ID of the product
 // query string with ?
 // avec ou sans window : retour dans console identique
 
 const queryString = window.location.search;
-console.log('voici le :' + queryString);
+//console.log('voici le :' + queryString);
 // queryString returns voici le :?id=5be9c8541c9d440000665243
-
 
 // utiliser la classe URLSearchParams
 // parametreUrl contient la partie variable de l'URL
 // parametreUrl contient les parametres de l'URL
 
 const parametreUrl = new URLSearchParams(queryString);
-console.log(parametreUrl);
+//console.log(parametreUrl);
 // la console liste toute les methods de URLSearchParams
 
 // use get() method of the URLSearchParams to get the first result in parameter
@@ -28,13 +29,6 @@ console.log(parametreUrl);
 const productId = parametreUrl.get('id');
 console.log('content :' + productId);
 // la console affiche l'id du produit
-
-
-
-
-
-
-
 
 
 // function fetch to get products data
@@ -48,7 +42,10 @@ function getProduct(url){
     })
     .then(function(data){
         console.log(data);
-        getArticle(data);
+        listConsole(data);
+        // display the product features
+        displayProduct(data);        
+        
     })
     .catch(function(error){
         error = 'attention';
@@ -57,19 +54,41 @@ function getProduct(url){
     })
 }
 
-// call the function with fetch
+// call the function with fetch + productId with Id
+// target the product alone
 
-getProduct('http://localhost:3000/api/teddies');
+//getProduct('http://localhost:3000/api/teddies/5be9c8541c9d440000665243');
+
+getProduct('http://localhost:3000/api/teddies/' + productId);
+console.log('url product id :' + productId);
 
 
-// l'article est un doudou
+// display data in the console
+// control panel
+// control data
 
-function getArticle(doudou){
-    console.table(doudou);
+function listConsole(data){
+    console.table(data);
     let ici = window.location;
     console.log('la page est : ' + ici);
     let search = window.location.search;
     console.log('partie variable de la page :' + search);
+}
 
+
+
+// function
+function displayProduct(){
+    let div = document.createElement('div');
+    div.classList.add('container');
+    div.classList.add('bg-info');
+    div.classList.add('d-flex');
+    div.classList.add('justify-content-center');
+    div.classList.add('align-items-center');
+    div.innerHTML = 'div cadre de produit';
+    
+    let container = document.getElementById('products-container');
+    container.appendChild(div);
 
 }
+
