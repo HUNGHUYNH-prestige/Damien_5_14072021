@@ -5,6 +5,10 @@ h1.classList.add('text-center');
 h1.classList.add('bg-warning');
 h1.innerHTML = 'Voici votre produit';
 
+
+
+// function fetch to get products data
+
 function getProduct(url){
     fetch(url)
     .then(function(result){
