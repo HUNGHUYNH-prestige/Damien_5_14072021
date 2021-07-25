@@ -42,10 +42,10 @@ function getProduct(url){
     })
     .then(function(data){
         console.log(data);
-        listConsole(data);
+        //listConsole(data);
         // display the product features
-        displayProduct(data);        
-        
+        displayProduct(data, data.colors);
+        //console.log('Voici les options : ' + data.colors);
     })
     .catch(function(error){
         error = 'attention';
@@ -66,7 +66,7 @@ console.log('url product id :' + productId);
 // display data in the console
 // control panel
 // control data
-
+/*
 function listConsole(data){
     console.table(data);
     let ici = window.location;
@@ -74,21 +74,133 @@ function listConsole(data){
     let search = window.location.search;
     console.log('partie variable de la page :' + search);
 }
-
-
+*/
 
 // function
-function displayProduct(){
+function displayProduct(data, colors){
+
+    //console.log('voir : ' + data);
+    // voir : [object Object]
+    //console.log('voir : ' + options);
+    // voir : Beige,Tan,Chocolate
+
     let div = document.createElement('div');
     div.classList.add('container');
     div.classList.add('bg-info');
     div.classList.add('d-flex');
     div.classList.add('justify-content-center');
     div.classList.add('align-items-center');
-    div.innerHTML = 'div cadre de produit';
+    div.classList.add('flex-wrap');
+
     
     let container = document.getElementById('products-container');
     container.appendChild(div);
 
+    let nom = document.createElement('h2');
+    nom.classList.add('h2');
+    nom.classList.add('text-center');
+    //console.log(data.name);
+    div.appendChild(nom);
+    nom.innerHTML = data.name;
+
+    let figure = document.createElement('figure');
+    figure.classList.add('d-flex');
+    figure.classList.add('justify-content-center');
+
+    div.appendChild(figure);
+
+    let image = document.createElement('img');
+    image.classList.add('card-size');
+    image.classList.add('src');
+    figure.appendChild(image);
+
+    let source = data.imageUrl;
+    //console.log(source);
+
+    image.src = source;
+    //console.log(image.src);
+
+    let texte = document.createElement('p');
+    texte.innerHTML = data.description;
+    nom.appendChild(texte);
+    //console.log(data.description);
+    //console.log(texte);
+
+    let prix = document.createElement('p');
+    prix.innerHTML = data.price/100 + ' euros';
+    nom.appendChild(prix);
+    //console.log(prix);
+    //console.log(data.price);
+
+    let formulaire = document.createElement('form');
+    
+    nom.appendChild(formulaire);
+
+    let label = document.createElement('label');
+    label.innerHTML = 'Faire un choix difficile :';
+
+    formulaire.appendChild(label);
+
+
+    let select = document.createElement('select');
+    formulaire.appendChild(select);
+
+    // get all color options in array from data table
+    // get the color choice in the data.colors
+    
+    for (color = 0 ; color < colors.length ; color++){
+        //console.log('indice de couleur : ' + color);
+        //console.log('table de couleur : ' + colors);
+        //console.log(colors.length);
+
+        let option = document.createElement('option');
+        option.innerHTML = colors[color];
+        option.value = colors[color];
+
+        //console.log('value : ' + option.value);
+        //console.log('innerHTML : ' + option.innerHTML);
+
+        select.appendChild(option);
+
+    }
+
+    let acheter = document.createElement('button');
+    acheter.classList.add('btn');
+    acheter.classList.add('btn-warning');
+    acheter.innerHTML = 'Acheter';
+        
+    nom.appendChild(acheter);
+
+
+    acheter.addEventListener('click', function(){
+        mettreDansPanier(data);
+
+    });
+
+
+
+
 }
 
+
+function mettreDansPanier(data){
+
+    console.log(data);
+
+    let article = {
+        nom : data.name,
+        image : data.imageUrl,
+        texte : data.description,
+        prix : data.price/100 + ' euros',
+        identifiant : data._id,
+        quantite : 1
+    }
+    console.log(article);
+
+    // get data of the article : ok
+
+    // reste a faire
+    // mettre en place le panier
+    // mettre en place le + et le - pour ajouter et retirer les articles
+    // localstorage
+}
