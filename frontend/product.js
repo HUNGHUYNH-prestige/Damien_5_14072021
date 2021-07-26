@@ -27,7 +27,7 @@ const parametreUrl = new URLSearchParams(queryString);
 // get('id') can try with get('name')
 
 const productId = parametreUrl.get('id');
-console.log('content :' + productId);
+//console.log('content :' + productId);
 // la console affiche l'id du produit
 
 
@@ -60,7 +60,7 @@ function getProduct(url){
 //getProduct('http://localhost:3000/api/teddies/5be9c8541c9d440000665243');
 
 getProduct('http://localhost:3000/api/teddies/' + productId);
-console.log('url product id :' + productId);
+//console.log('url product id :' + productId);
 
 
 // display data in the console
@@ -185,7 +185,12 @@ function displayProduct(data, colors){
 
 function mettreDansPanier(data){
 
-    console.log(data);
+    //console.log(data);
+
+    // by default nombre = 1
+
+    let nombre = 1;
+    //console.log(nombre);
 
     let article = {
         nom : data.name,
@@ -193,9 +198,10 @@ function mettreDansPanier(data){
         texte : data.description,
         prix : data.price/100 + ' euros',
         identifiant : data._id,
-        quantite : 1
+        quantite : nombre
     }
-    console.log(article);
+    //console.log(article);
+    //console.table(article);
 
     // get data of the article : ok
 
@@ -203,4 +209,24 @@ function mettreDansPanier(data){
     // mettre en place le panier
     // mettre en place le + et le - pour ajouter et retirer les articles
     // localstorage
+
+    // parse     => transforme le json en js
+    // stringify => transforme le js   en json
+    let marchandise = JSON.parse(localStorage.getItem('marchandise'));
+    //console.log(marchandise);
+    // rien de defini, resultat dans la console : null
+
+    // si la condition est false alors 
+    if (marchandise !== null){
+        marchandise = [];
+        marchandise.push(article);
+        localStorage.setItem('marchandise', JSON.stringify(article));
+        console.log(marchandise);
+
+    }
+    // si la condition differente de la premiere condition
+    else{
+        console.log('Aucun Article !');
+        
+    }
 }
