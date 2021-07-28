@@ -2,22 +2,25 @@ body{
     padding: 0px;
     margin: 0px;
     background: pink;
+    font-size: 2em;
+}
+
+.quantite-dans-panier{
+    border: 0.1em solid yellow;
+    border-radius: 100%;
+    background: lightgreen;
 }
 
 .products-list{
     border: 0.5em dotted yellowgreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex-center;
     flex-wrap: wrap;
     width: auto;
     height: auto;
 }
 
 .article{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex-center;
     flex-wrap: wrap;
     border: 0.5em solid blue;
 
@@ -31,3 +34,36 @@ body{
     border: 0.5em solid yellowgreen;
 }
 
+/*
+page panier
+*/
+
+.recaptitulatif-panier-css{
+    border: 0.2em dashed yellow;
+    padding: 10px;
+    margin: 10px;
+    @include display-flex-center;
+    flex-wrap: wrap;
+}
+
+.panier-fiche{
+    border-bottom: 0.25em double yellow;
+    width: 17%;
+    @include display-flex-center;
+}
+
+.panier-data{
+    @include display-flex-center;
+    flex-wrap: nowrap;
+    padding: 10px;
+    margin: 10px;
+    border: 0.1em solid blue;
+    font-size: 1em;
+    width: 45%;
+}
+
+.icone{
+    @include display-flex-center;
+    width: 50%;
+    font-size: 2em;
+}

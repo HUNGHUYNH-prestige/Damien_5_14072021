@@ -90,7 +90,7 @@ function displayData(data){
         bouton.classList.add('href');
         
         let id = data[indice]._id;
-        console.log('id du produit : ' + id);
+        //console.log('id du produit : ' + id);
         
         //let lien = 'product.html?id=' + data[indice]._id;
         // page de destination + ? marque de query string + paire key=value avec key : id et value : id product
@@ -101,16 +101,16 @@ function displayData(data){
         // parce que unique
 
         bouton.href = lien;
-        console.log('lien avec id :' + lien);
+        //console.log('lien avec id :' + lien);
 
         // where is the current page
         // 1. sans window
         let sans = location.href;
-        console.log('sans window' + sans);
+        //console.log('sans window : ' + sans);
 
         // 2. avec window
         let avec = window.location.href;
-        console.log('avec window :' + avec);
+        //console.log('avec window : ' + avec);
 
         // conclusion : url identique
 
@@ -123,7 +123,7 @@ function displayData(data){
 
         // location avec search
         var search = window.location.search;
-        console.log('search :' + search);
+        //console.log(search);
         // console : vide 
 
 

@@ -51,6 +51,7 @@ function getProduct(url){
         error = 'attention';
         console.log('Il y a une erreur :' + error);
         console.error('Message d\'erreur : analyse URL');
+        alert('ATTENTION : CHARGEMENT IMPOSSIBLE !');
     })
 }
 
@@ -177,9 +178,6 @@ function displayProduct(data, colors){
 
     });
 
-
-
-
 }
 
 
@@ -200,33 +198,46 @@ function mettreDansPanier(data){
         identifiant : data._id,
         quantite : nombre
     }
-    //console.log(article);
-    //console.table(article);
-
+    console.log(article);
+    console.table(article);
     // get data of the article : ok
 
-    // reste a faire
-    // mettre en place le panier
-    // mettre en place le + et le - pour ajouter et retirer les articles
-    // localstorage
+    // function =>
+    const messageConfirmation = () => {
+        if (window.confirm(`Excellent choix : produit dans le panier !
+OK pour aller au panier
+ANNULER pour aller sur la page principale`)){
+            window.location.href = 'panier.html';
+        }else{
+            window.location.href = 'index.html';
+        }
+    }
 
     // parse     => transforme le json en js
     // stringify => transforme le js   en json
-    let marchandise = JSON.parse(localStorage.getItem('marchandise'));
-    //console.log(marchandise);
-    // rien de defini, resultat dans la console : null
 
-    // si la condition est false alors 
-    if (marchandise !== null){
-        marchandise = [];
+    // mettre en place le local storage avec le getItem 
+
+    let marchandise = JSON.parse(localStorage.getItem('panier'));
+    //console.log(marchandise);
+
+    // si local storage non vide = rempli = non null
+    if (marchandise){
         marchandise.push(article);
-        localStorage.setItem('marchandise', JSON.stringify(article));
+        localStorage.setItem('panier', JSON.stringify(marchandise));
         console.log(marchandise);
+        console.log('je suis dans le if');
+        messageConfirmation();
 
     }
-    // si la condition differente de la premiere condition
+    // si local storage vide = non rempli = null
     else{
-        console.log('Aucun Article !');
-        
+        marchandise = [];
+        marchandise.push(article);
+        localStorage.setItem('panier', JSON.stringify(marchandise));
+        console.log(marchandise);
+        console.log('je suis dans le else');
+        messageConfirmation();
+
     }
 }
