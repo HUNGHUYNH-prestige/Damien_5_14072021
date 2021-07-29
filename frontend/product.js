@@ -185,32 +185,37 @@ function mettreDansPanier(data){
 
     //console.log(data);
 
-    // by default nombre = 1
-
-    let nombre = 1;
-    //console.log(nombre);
-
     let article = {
         nom : data.name,
         image : data.imageUrl,
         texte : data.description,
         prix : data.price/100 + ' euros',
         identifiant : data._id,
-        quantite : nombre
+        quantite : 1
     }
-    console.log(article);
-    console.table(article);
+    //console.log(article);
+    //console.table(article);
     // get data of the article : ok
 
     // function =>
+    
     const messageConfirmation = () => {
-        if (window.confirm(`Excellent choix : produit dans le panier !
-OK pour aller au panier
-ANNULER pour aller sur la page principale`)){
+
+        let texte;
+        let bouton = window.confirm('OK pour aller vers le panier \net \nANNULER pour rester sur la page');
+
+        // true pour OK
+        if (bouton == true){
+            texte = 'Aller vers le panier';
             window.location.href = 'panier.html';
-        }else{
-            window.location.href = 'index.html';
         }
+        // false pour ANNULER
+        else{
+            texte = 'Rester sur la page';
+        }
+
+        //window.alert('Excellent choix ! Article dans le panier ! ');
+        //window.location.reload();
     }
 
     // parse     => transforme le json en js
@@ -218,26 +223,46 @@ ANNULER pour aller sur la page principale`)){
 
     // mettre en place le local storage avec le getItem 
 
-    let marchandise = JSON.parse(localStorage.getItem('panier'));
+    let marchandise = JSON.parse(localStorage.getItem('marchandise'));
     //console.log(marchandise);
 
-    // si local storage non vide = rempli = non null
-    if (marchandise){
-        marchandise.push(article);
-        localStorage.setItem('panier', JSON.stringify(marchandise));
-        console.log(marchandise);
-        console.log('je suis dans le if');
-        messageConfirmation();
+    const ajouterDansLeLocalStorage = () => {
+        localStorage.setItem('marchandise', JSON.stringify(marchandise));
+    }
 
+    const pushInArray = () => {
+        marchandise.push(article);
+        console.log(article);
+    }
+
+    // si local storage non vide = rempli = non null
+    if (marchandise === null){
+        marchandise = [];
+        pushInArray();
+        
+        console.log('je suis dans le if');
     }
     // si local storage vide = non rempli = null
     else{
-        marchandise = [];
-        marchandise.push(article);
-        localStorage.setItem('panier', JSON.stringify(marchandise));
-        console.log(marchandise);
-        console.log('je suis dans le else');
-        messageConfirmation();
 
+        let present = false;
+
+        for (indice = 0 ; indice < marchandise.length ; indice++){
+            if (marchandise[indice].identifiant === article.identifiant){
+                marchandise[indice].quantite++;
+                present = true;
+            }
+        }
+
+        // push in the array only if the item is not present
+        // push in the array only if the item is unique
+        if (present !== true){
+            pushInArray();
+        }
+        
+        console.log('je suis dans le else');
     }
+    ajouterDansLeLocalStorage();
+    messageConfirmation();
+    
 }
