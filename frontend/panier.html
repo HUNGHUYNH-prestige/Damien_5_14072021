@@ -67,7 +67,7 @@
     
         <main>
 
-            <h1 id="h1" class="h1"></h1>
+            <h1 class="d-flex justify-content-center">Vos choix sont ici</h1>
 
             <!--
                 creer des sections pour contenir les articles
@@ -78,42 +78,7 @@
                 
             </section>
 
-            <!--
-                modele de fiche du produit -- start
-            -->
-
-
-            <!--
-            <article class="container bg-info">
-                <div class="panier-fiche">Fiche Produit</div>
-
-                <div class="row d-flex justify-content-around">
-                    <div class="panier-data">Nom du produit</div>
-                    <div class="panier-data bg-warning">doudou</div>
-                </div>
-
-                <div class="row d-flex justify-content-around">
-                    <div class="panier-data">Prix du produit</div>
-                    <div class="panier-data bg-warning">prix en euros</div>
-                </div>
-
-                <div class="row d-flex justify-content-around">
-                    <div class="panier-data">Quantite du produit</div>
-                    <div class="panier-data bg-warning">quantite</div>
-                </div>
-                <div class="row d-flex justify-content-around">
-                    <div class="row d-flex justify-content-around">Supprimer ce produit</div>
-                    <i class="icone fas fa-trash bg-danger"></i>
-                </div>
-                
-            </article>
-            -->
-            
-
-
-            <!--
-                modele de fiche de produit -- end
-            -->
+        
 
         </main>
     
@@ -130,20 +95,39 @@
         -->
 
 
-        <section>
-
-            <form>
-
-            <!--
-                finir le formulaire
-                ensuite js pour le panier
-                regarder le code
-            -->
-
-
-                
-            </form>
-
+        <h2 class="d-flex justify-content-center">Formulaire de commande</h2>
+        <section class="section-de-formulaire">
+            <fieldset class="formulaire" id="fieldset">
+                <form class="row">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">NOM</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="DUPONT">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">PRENOM</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="MARTIN">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">ADRESSE</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="5 Rue du Pont">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">CODE POSTAL</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="12345">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">VILLE</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Paris">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">EMAIL</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="martindupont@email.com">
+                    </div>
+                    <div class="form-group d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-primary">VALIDER</button>
+                    </div>                    
+                </form>
+            </fieldset>
         </section>
 
         <!--

@@ -78,4 +78,20 @@ page panier
   font-size: 2em;
 }
 
+.section-de-formulaire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulaire {
+  width: auto;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5em solid gold;
+}
+
 /*# sourceMappingURL=styles.css.map */

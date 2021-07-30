@@ -67,3 +67,14 @@ page panier
     width: 50%;
     font-size: 2em;
 }
+
+.section-de-formulaire{
+    @include display-flex-center;
+}
+.formulaire{
+    width: auto;
+    margin: 10px;
+    padding: 10px;
+    @include display-flex-center;
+    border: 0.5em solid gold;
+}
