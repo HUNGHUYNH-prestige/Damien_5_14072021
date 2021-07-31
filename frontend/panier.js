@@ -191,42 +191,14 @@ function recapitulatifDesProduitsDansLePanier(){
             console.log(marchandise);
 
             index = marchandise.indexOf(marchandise);
-            console.log(index);
+            console.log('index : ' + index);
 
-            for (unite = 0 ; unite < marchandise.length ; unite++){
-                
-            }
-
-            
+            retirer = marchandise.splice(index,1);
+            console.log(retirer);
 
 
 
-            /*
-            for (unite = 0 ; unite < marchandise.length ; unite++){
-                console.log(marchandise[unite].quantite);
-                marchandise[unite].quantite--;
-                localStorage.setItem('marchandise', JSON.stringify(marchandise));
-
-                console.log(marchandise[unite].quantite);     
-            }
-            window.location.reload();
-
-            if (marchandise[unite].quantite == 0){
-                console.log('vider vider vider');
-                
-
-                marchandise.splice(index,1);
-                console.log(marchandise.splice(index,1));
-                console.log(marchandise);
-
-                localStorage.setItem('marchandise', JSON.stringify(marchandise));
-
-                alert('Retirer article du panier !');
-
-                window.location.reload();
-            }
-
-            */
+          
 
             
 
