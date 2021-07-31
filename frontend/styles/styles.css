@@ -78,6 +78,31 @@ page panier
   font-size: 2em;
 }
 
+.boite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.information {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2em;
+}
+
+.controle-quantite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prix-pour-cet-article {
+  padding: 0.5em;
+}
+
 .section-de-formulaire {
   display: flex;
   justify-content: center;

@@ -100,12 +100,15 @@ function viderTout(propre){
 }
 
 function recapitulatifDesProduitsDansLePanier(){
-    console.log('recapitulatif des produits dans le panier');
+    //console.log('recapitulatif des produits dans le panier');
 
     for (unite = 0 ; unite < marchandise.length ; unite++){
-        //console.log(unite);
-        //console.log(marchandise.length);
-        //console.log(marchandise[unite]);
+        /*
+        console.log(unite);
+        console.log(marchandise.length);
+        console.log(marchandise[unite]);
+        console.log(marchandise[unite].quantite);
+        */
 
         
         /*
@@ -115,60 +118,163 @@ function recapitulatifDesProduitsDansLePanier(){
         */
 
         let boite = document.createElement('div');
-        boite.classList.add('row');
-        boite.classList.add('d-flex');
         boite.classList.add('boite');
         panier.appendChild(boite);
         
 
         let nom = document.createElement('div');
         nom.classList.add('information');
-        //nom.innerHTML = 'Nom de l\'article : ' + marchandise[unite]['nom'];
+        nom.innerHTML = 'Nom de l\'article : ' + marchandise[unite]['nom'];
         boite.appendChild(nom);
 
+        let controle = document.createElement('div');
+        controle.classList.add('d-flex');
+        controle.classList.add('controle-quantite');
+        boite.appendChild(controle);
+
+        // mettre dans le controle la quantite
         let quantite = document.createElement('div');
         quantite.classList.add('information');
-        //quantite.innerHTML = 'Nombre de cet article : ' + marchandise[unite]['quantite'];
-        boite.appendChild(quantite);
+        quantite.innerHTML = 'Nombre de cet article : ' + marchandise[unite]['quantite'];
+        controle.appendChild(quantite);
 
-        // jusqu'ici tout est ok
-        // reprendre sur le bouton + et -
-        // fonction total du panier problem de nan
+        // mettre dans le controle le - pour retirer
+        let moins = document.createElement('button');
+        moins.classList.add('btn');
+        moins.classList.add('btn-primary');
+        moins.innerHTML = '-';
+        controle.appendChild(moins);
+
+        let plus = document.createElement('button');
+        plus.classList.add('btn');
+        plus.classList.add('btn-primary');
+        plus.innerHTML = '+';
+        controle.appendChild(plus);
+
+        // decision : affiche le prix et la poubelle
+        let decision = document.createElement('div');
+        decision.classList.add('information');
         
+        boite.appendChild(decision);
 
+        // effectuer une conversion du string en number pour le prix de marchandise
+        let entier = parseInt(marchandise[unite].prix);
+        //console.log(typeof entier);
         
+        // par produit le prix total
+        let totalArticle = (marchandise[unite].quantite * entier);
+        // entier = marchandise[unite].prix
+
+        /*
+        console.log(typeof marchandise);
+        // marchandise = object
+
+        console.log(typeof marchandise[unite].quantite);
+        // marchandise[unite].quantite = number
+
+        console.log(typeof marchandise[unite].prix);
+        // marchandise[unite].prix = string
+        */
+        
+        let prixTotalParProduit = document.createElement('div');
+        prixTotalParProduit.classList.add('prix-pour-cet-article');
+        prixTotalParProduit.innerHTML = 'Prix total pour cet article : ' + totalArticle + ' euros';
+        decision.appendChild(prixTotalParProduit);
+
+        let poubelle = document.createElement('button');
+        poubelle.classList.add('text-center');
+        poubelle.innerHTML = 'SUPPRIMER CET ARTICLE !';
+        decision.appendChild(poubelle);
+        
+        moins.addEventListener('click', function(){
+            console.log('retirer un article');
+            console.log(marchandise);
+
+            index = marchandise.indexOf(marchandise);
+            console.log(index);
+
+            for (unite = 0 ; unite < marchandise.length ; unite++){
+                
+            }
+
+            
 
 
+
+            /*
+            for (unite = 0 ; unite < marchandise.length ; unite++){
+                console.log(marchandise[unite].quantite);
+                marchandise[unite].quantite--;
+                localStorage.setItem('marchandise', JSON.stringify(marchandise));
+
+                console.log(marchandise[unite].quantite);     
+            }
+            window.location.reload();
+
+            if (marchandise[unite].quantite == 0){
+                console.log('vider vider vider');
+                
+
+                marchandise.splice(index,1);
+                console.log(marchandise.splice(index,1));
+                console.log(marchandise);
+
+                localStorage.setItem('marchandise', JSON.stringify(marchandise));
+
+                alert('Retirer article du panier !');
+
+                window.location.reload();
+            }
+
+            */
+
+            
+
+            
+            
+
+
+        });
+
+
+        //plus.addEventListener('click', ajouterUnArticle(marchandise[unite]));
+
+        //poubelle.addEventListener('click', supprimerUnArticle(marchandise[unite]));
         
     }
+
+    sommeDeTousLesArticlesDansLePanier();
+
+    let sommeFinalTotal = ligneTotal + ' euros';
+    /*
+    console.log(typeof marchandise[0]);
+    console.log(typeof marchandise.quantite);
+    console.log(typeof sommeFinalTotal);
+    */
+    let finalTotal = document.createElement('div');
+    finalTotal.classList.add('text-center');
+    finalTotal.innerHTML = 'LE PANIER TOTAL EST DE : ' + sommeFinalTotal;
+    panier.appendChild(finalTotal);
     
 }
 
-// fonction pour faire la somme totale des articles dans le panier : prix unitaire x nombre d'articles dans la panier
-
-
-function totalDuPanier(){
-    let total = 0;
-    
-    for (nombre = 0; nombre < marchandise.length ; nombre++){
-
-        let prix = marchandise[nombre].prix;
-        let quantite = marchandise[nombre].quantite;
-
-        let total = total + (prix * quantite);
+// faire la somme de tous les articles dans le panier
+function sommeDeTousLesArticlesDansLePanier(){
+    //console.log('somme de tous les articles dans le panier');
+    for (indice in marchandise){
         
-        console.log(prix);
-        console.log(quantite);
-        console.log(total);
+        article = marchandise[indice];
+        ligneTotal = ligneTotal + (parseInt(marchandise[indice].prix)*marchandise[indice].quantite);
+        
     }
-    return total;
-    
+    return ligneTotal;
+   
 }
 
-totalDuPanier();
 
 
 
 // call the main function
-
+// definir la ligne total qui est la somme de toutes les lignes de tous les articles dans le panier
+var ligneTotal = 0;
 afficherLocalStorage();
