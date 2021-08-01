@@ -1,4 +1,9 @@
+// mettre ici que le code pour le fonctionnement de la page panier
+// le code pour le formulaire est dans un autre script
+// script only for article display
+
 console.log('ici le panier');
+
 
 // reprendre le local storage
 // reprendre les informations dans le local storage
@@ -109,13 +114,16 @@ function recapitulatifDesProduitsDansLePanier(){
         console.log(marchandise[unite]);
         console.log(marchandise[unite].quantite);
         */
-
         
-        /*
+        
         let article = marchandise[unite];
-        console.log(article);
-        console.log(marchandise[unite]);
+        //console.log(article);
+        //console.log(marchandise[unite]);
+        /*
+        ici le console.log pour article = console.log pour marchandise[unite] parce que unite est connue
+        utile pour la suite attention 
         */
+        
 
         let boite = document.createElement('div');
         boite.classList.add('boite');
@@ -124,7 +132,7 @@ function recapitulatifDesProduitsDansLePanier(){
 
         let nom = document.createElement('div');
         nom.classList.add('information');
-        nom.innerHTML = 'Nom de l\'article : ' + marchandise[unite]['nom'];
+        nom.innerHTML = 'Nom de l\'article : ' + article['nom'];
         boite.appendChild(nom);
 
         let controle = document.createElement('div');
@@ -135,7 +143,7 @@ function recapitulatifDesProduitsDansLePanier(){
         // mettre dans le controle la quantite
         let quantite = document.createElement('div');
         quantite.classList.add('information');
-        quantite.innerHTML = 'Nombre de cet article : ' + marchandise[unite]['quantite'];
+        quantite.innerHTML = 'Nombre de cet article : ' + article['quantite'];
         controle.appendChild(quantite);
 
         // mettre dans le controle le - pour retirer
@@ -158,12 +166,14 @@ function recapitulatifDesProduitsDansLePanier(){
         boite.appendChild(decision);
 
         // effectuer une conversion du string en number pour le prix de marchandise
-        let entier = parseInt(marchandise[unite].prix);
+        let entier = parseInt(article.prix);
         //console.log(typeof entier);
         
         // par produit le prix total
-        let totalArticle = (marchandise[unite].quantite * entier);
+        let totalArticle = (article.quantite * entier);
         // entier = marchandise[unite].prix
+        // entier = article.prix
+        // parce que article = marchandise[unite]
 
         /*
         console.log(typeof marchandise);
@@ -186,32 +196,56 @@ function recapitulatifDesProduitsDansLePanier(){
         poubelle.innerHTML = 'SUPPRIMER CET ARTICLE !';
         decision.appendChild(poubelle);
         
+        // le bouton - : moins 1 article pour la ligne d'article
         moins.addEventListener('click', function(){
             console.log('retirer un article');
             console.log(marchandise);
-
-            index = marchandise.indexOf(marchandise);
-            console.log('index : ' + index);
-
-            retirer = marchandise.splice(index,1);
-            console.log(retirer);
-
-
-
-          
-
             
+            moinsUnArticle(article);
 
+            /*
+            ATTENTION : marchandise[unite] != article
+            bien que le console.log affiche un objet identique au depart hors du addeventlistener
+            */
+            console.log(marchandise);
+            // marchandise est un array complet
+            // marchandise est de typeof : object
+            // console.log(marchandise[unite]); => indefined parce que unite n'est pas connu
+            //console.log(marchandise[0].quantite);
+            //console.log(marchandise[1].quantite);
+            // marchandise[index du array].quantite retourne la valeur de la quantite 
+            console.log(article);
+            // article retourne uniquement un article de l'array marchandise
+            // console.log(article) retourne l'article = marchandise[index] = array[index]
+            
+            if (article.quantite == 0){
+                retirerUnArticle(article);
+            }
             
             
-
-
+           // tester la fonction ici
+           // fonctionne : si reste 1 article dans le panier alors cette fonction supprime l'article du panier et ensuite comme le panier est vide => redirection vers HOME
+           //retirerUnArticle(article);
         });
 
 
-        //plus.addEventListener('click', ajouterUnArticle(marchandise[unite]));
+        // le bouton + : plus 1 article pour la ligne d'article
+        plus.addEventListener('click', function(){
+            console.log('click sur + event');
+            plusUnArticle(article);
+
+            if (article.quantite == 11){
+                alert('Attention : beaucoup d\'articles !');
+            }
+        })
+
 
         //poubelle.addEventListener('click', supprimerUnArticle(marchandise[unite]));
+        // le bouton pour SUPPRIMER CET ARTICLE de la ligne d'article
+        poubelle.addEventListener('click', function(){
+            console.log('fonction pour supprimer la ligne d\'article !');
+            retirerUnArticle(article);
+        })
         
     }
 
@@ -235,12 +269,59 @@ function sommeDeTousLesArticlesDansLePanier(){
     //console.log('somme de tous les articles dans le panier');
     for (indice in marchandise){
         
-        article = marchandise[indice];
         ligneTotal = ligneTotal + (parseInt(marchandise[indice].prix)*marchandise[indice].quantite);
         
     }
     return ligneTotal;
    
+}
+
+
+// plus un article dans la quantite d'un article
+// faire plus 1 a chaque fois click sur +
+function plusUnArticle(article){
+    console.log('ajouter 1 article avec +');
+    console.log(article);
+    console.log(article.quantite);
+    article.quantite++;
+    console.log(article.quantite);
+    localStorage.setItem('marchandise', JSON.stringify(marchandise));
+    window.location.reload();
+
+}
+
+
+// moins un article dans la quantite d'un article
+// faire moins 1 a chaque fois click sur -
+function moinsUnArticle(article){
+    //console.log('je suis dans la fonction');
+    //console.log(article);
+    //console.log(article.quantite);
+    article.quantite--;
+    //console.log(article.quantite);
+    localStorage.setItem('marchandise',JSON.stringify(marchandise));
+    window.location.reload();
+}
+
+
+
+
+// retirer un article du local storage = marchandise = array = panier
+function retirerUnArticle(article){
+    //console.log('je suis dans la fonction pour retirer un article !');
+    console.log(marchandise);
+
+    let index = marchandise.indexOf(article);
+    marchandise.splice(index, 1);
+
+    console.log('message alerte : article deleted');
+    console.log('article.quantite == 0');
+
+    localStorage.setItem('marchandise', JSON.stringify(marchandise));
+
+    alert('Suppresion de l\'article !');
+    
+    window.location.reload();   
 }
 
 
