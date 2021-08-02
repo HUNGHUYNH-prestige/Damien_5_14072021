@@ -96,35 +96,36 @@
 
 
         <h2 class="d-flex justify-content-center">Formulaire de commande</h2>
+        <div>ATTENTION : tous les champs de saisie sont obligatoires</div>
         <section class="section-de-formulaire">
             <fieldset class="formulaire" id="fieldset">
                 <form class="row">
                     <div class="form-group">
-                        <label for="formGroupExampleInput">NOM</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="DUPONT">
+                        <label for="first-name">PRENOM</label>
+                        <input type="text" class="form-control" id="first-name" placeholder="David" required>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">PRENOM</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="MARTIN">
+                        <label for="last-name">NOM</label>
+                        <input type="text" class="form-control" id="last-name" placeholder="MARTIN" required>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">ADRESSE</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="5 Rue du Pont">
+                        <label for="address">ADRESSE</label>
+                        <input type="text" class="form-control" id="address" placeholder="5 Rue du Pont" required>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">CODE POSTAL</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="12345">
+                        <label for="zip-code">CODE POSTAL</label>
+                        <input type="number" class="form-control" id="zip-code" placeholder="12345" required>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">VILLE</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Paris">
+                        <label for="city">VILLE</label>
+                        <input type="text" class="form-control" id="city" placeholder="Paris" required>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">EMAIL</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="martindupont@email.com">
+                        <label for="email">EMAIL</label>
+                        <input type="email" class="form-control" id="email" placeholder="davidmartin@email.com" required>
                     </div>
                     <div class="form-group d-flex justify-content-center mt-3">
-                        <button type="submit" class="btn btn-primary">VALIDER</button>
+                        <button type="submit" class="btn btn-primary" id="submit">VALIDER</button>
                     </div>                    
                 </form>
             </fieldset>
@@ -216,6 +217,7 @@
         -->
     
         <script src="panier.js"></script>
+        <script src="form.js"></script>
     
         <!--
             poser le script JavaScript -- end
