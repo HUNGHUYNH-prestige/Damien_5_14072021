@@ -369,8 +369,10 @@ let order;
 // define the regular expression for pattern check before submit
 
 let emailValid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+//let emailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let zipcodeValid = /^(?:[0-8]\d|9[0-8])\d{3}$/;
 let saisieValid = /^[^-\s][a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
+let addressValid = /^[a-zA-Z0-9\s\,\''\-]*$/;
 
 // define the function to check the regular expression when input
 function validFormCheckingRegularExpression(){
@@ -381,7 +383,7 @@ function validFormCheckingRegularExpression(){
         validationDeLaSaisie(saisieValid, this, messageNom);
     })
     adresse.addEventListener('change', function(){
-        validationDeLaSaisie(saisieValid, this, messageAdresse);
+        validationDeLaSaisie(addressValid, this, messageAdresse);
     })
     code.addEventListener('change', function(){
         validationDeLaSaisie(zipcodeValid, this, messageCode);
@@ -400,21 +402,21 @@ validFormCheckingRegularExpression();
 // define the function : validationDeLaSaisie(param1, param2, param3)
 // check each input line before validation
 function validationDeLaSaisie(regularExpressionPattern, saisie, zoneMessage){
-    let testing = regularExpressionPattern.test(saisie.value);
-    console.log(saisie.value);
-    console.log(testing);
-    if (testing == false){
+    //let testing = regularExpressionPattern.test(saisie.value);
+    //console.log(saisie.value);
+    //console.log(testing);
+    if (regularExpressionPattern.test(saisie.value) == false){
         console.log('je suis dans false');
         saisie.classList.add('border-warning');
         zoneMessage.innerHTML = 'ATTENTION ! Saisie incorrecte !';
     }
-    else if(testing == true){
+    else if(regularExpressionPattern.test(saisie.value) == true){
         console.log('je suis dans true');
         saisie.classList.remove('border-warning');
         saisie.classList.add('border-success');
         zoneMessage.innerHTML = 'PARFAIT !';
     }
-    return testing;
+    return regularExpressionPattern.test(saisie.value);
 }
 
 
@@ -432,12 +434,12 @@ submit.addEventListener('click', function(quoi){
 
     // check data input incorrect or empty or correct
     
-    if (!prenom.value || !nom.value || !adresse.value || !code.value || !ville.value || !email.value || !saisieValid.test(prenom.value) || !saisieValid.test(nom.value) || !saisieValid.test(adresse.value) || !saisieValid.test(code.value) || !saisieValid.test(ville.value) || !saisieValid.test(email.value)){
+    if (!prenom.value || !nom.value || !adresse.value || !code.value || !ville.value || !email.value || !saisieValid.test(prenom.value) || !saisieValid.test(nom.value) || !addressValid.test(adresse.value) || !zipcodeValid.test(code.value) || !saisieValid.test(ville.value) || !emailValid.test(email.value)){
         console.log('ATTENTION : soit VIDE soit INCORRECTE !');
         console.log('refresh the page to try again !');
         quoi.preventDefault();
     }
-    //else{
+    else{
         // after checking
         console.log("data correct ready to send request post methods !");
         // send array to server
@@ -474,7 +476,7 @@ submit.addEventListener('click', function(quoi){
         localStorage.setItem('ligneTotal', JSON.stringify(totalPanierArray));
         
         postRequest("http://localhost:3000/api/teddies/order");
-    //}
+    }
 })
 
 
