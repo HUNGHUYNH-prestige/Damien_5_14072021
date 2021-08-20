@@ -192,9 +192,9 @@ function recapitulatifDesProduitsDansLePanier(){
         decision.appendChild(prixTotalParProduit);
 
         let poubelle = document.createElement('button');
-        poubelle.classList.add('text-center');
+        poubelle.classList.add('bouton-pour-supprimer-un-article');
         poubelle.innerHTML = 'SUPPRIMER CET ARTICLE !';
-        decision.appendChild(poubelle);
+        boite.appendChild(poubelle);
         
         // le bouton - : moins 1 article pour la ligne d'article
         moins.addEventListener('click', function(){

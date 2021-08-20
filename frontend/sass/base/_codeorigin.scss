@@ -5,14 +5,17 @@ body{
     font-size: 2em;
 }
 
+
 .quantite-dans-panier{
-    border: 0.1em solid yellow;
-    border-radius: 100%;
-    background: lightgreen;
+    //border: 0.1em solid yellow;
+    //border-radius: 100%;
+    //background: lightgreen;
+    @include display-flex-center;
 }
 
+
 .products-list{
-    border: 0.5em dotted yellowgreen;
+    //border: 0.5em dotted yellowgreen;
     @include display-flex-center;
     flex-wrap: wrap;
     width: auto;
@@ -22,7 +25,7 @@ body{
 .article{
     @include display-flex-center;
     flex-wrap: wrap;
-    border: 0.5em solid blue;
+    //border: 0.5em solid blue;
 
 }
 
@@ -31,7 +34,7 @@ body{
     height: auto;
     padding: 10px;
     margin: 10px;
-    border: 0.5em solid yellowgreen;
+    //border: 0.5em solid yellowgreen;
 }
 
 /*
@@ -88,6 +91,11 @@ page panier
 
 .prix-pour-cet-article{
     padding: 0.5em;
+}
+
+.bouton-pour-supprimer-un-article{
+    width: 80%;
+
 }
 
 .section-de-formulaire{

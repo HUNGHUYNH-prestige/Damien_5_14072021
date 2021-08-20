@@ -6,13 +6,12 @@ body {
 }
 
 .quantite-dans-panier {
-  border: 0.1em solid yellow;
-  border-radius: 100%;
-  background: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .products-list {
-  border: 0.5em dotted yellowgreen;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 0.5em solid blue;
 }
 
 .card-size {
@@ -34,7 +32,6 @@ body {
   height: auto;
   padding: 10px;
   margin: 10px;
-  border: 0.5em solid yellowgreen;
 }
 
 /*
@@ -101,6 +98,10 @@ page panier
 
 .prix-pour-cet-article {
   padding: 0.5em;
+}
+
+.bouton-pour-supprimer-un-article {
+  width: 80%;
 }
 
 .section-de-formulaire {

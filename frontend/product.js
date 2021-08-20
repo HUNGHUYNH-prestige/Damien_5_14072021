@@ -22,12 +22,14 @@ const queryString = window.location.search;
 const parametreUrl = new URLSearchParams(queryString);
 //console.log(parametreUrl);
 // la console liste toute les methods de URLSearchParams
+console.log(queryString);
+// forme de queryString : ?id=5be9c8541c9d440000665243
 
 // use get() method of the URLSearchParams to get the first result in parameter
 // get('id') can try with get('name')
 
 const productId = parametreUrl.get('id');
-//console.log('content :' + productId);
+console.log('content : ' + productId);
 // la console affiche l'id du produit
 
 
@@ -62,6 +64,8 @@ function getProduct(url){
 
 getProduct('http://localhost:3000/api/teddies/' + productId);
 //console.log('url product id :' + productId);
+
+
 
 
 // display data in the console
